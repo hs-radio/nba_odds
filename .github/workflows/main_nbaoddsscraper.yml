@@ -25,13 +25,8 @@ jobs:
         with:
           python-version: ${{ env.PYTHON_VERSION }}
 
-      - name: Cache pip dependencies
-        uses: actions/cache@v3
-        with:
-          path: ~/.cache/pip
-          key: ${{ runner.os }}-pip-${{ hashFiles('**/requirements.txt') }}
-          restore-keys: |
-            ${{ runner.os }}-pip-
+      - name: List files in the repository
+        run: ls -R # This will list all files in the repository
 
       - name: Display requirements.txt
         run: cat requirements.txt  # Debug step to ensure correct file contents
@@ -78,12 +73,4 @@ jobs:
         with:
           client-id: ${{ secrets.AZUREAPPSERVICE_CLIENTID_F7C68972C01D47F8A08205838E0E8E19 }}
           tenant-id: ${{ secrets.AZUREAPPSERVICE_TENANTID_A62AB07B61D14DC689D46CAF07FBAADE }}
-          subscription-id: ${{ secrets.AZUREAPPSERVICE_SUBSCRIPTIONID_D06CE20E96774E1FB90C9D1B34B1649C }}
-
-      - name: 'Deploy to Azure Functions'
-        uses: Azure/functions-action@v1
-        id: deploy-to-function
-        with:
-          app-name: 'nbaOddsScraper'
-          slot-name: 'Production'
-          package: ${{ env.AZURE_FUNCTIONAPP_PACKAGE_PATH }}
+          subscription-id: ${{ secrets.AZUREAPPS
