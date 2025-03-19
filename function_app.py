@@ -1,4 +1,4 @@
-import azure.functions as func
+import azure-functions as func
 from .additional_functions import process_task
 
 app = func.FunctionApp()
