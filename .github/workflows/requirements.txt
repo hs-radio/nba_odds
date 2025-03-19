@@ -1,3 +1,1 @@
-azure-mgmt-compute
-requests
 
