@@ -1,4 +1,2 @@
-azure-functions
-requests
-pandas
-numpy
+requests==2.31.0
+azure
